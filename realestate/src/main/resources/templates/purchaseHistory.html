@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  height:auto;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  background-color:white;
+  background: transparent;
+}
+.customers {
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:auto;
+	margin-bottom:auto;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+  color:white;
+}
+
+.customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 4px;
+}
+
+.customers tr:hover {background-color:dodgerblue;}
+
+.customers th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 12%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color:indigo;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+img{border-radius: 50%;}
+</style>
+</head>
+<body  style="background-image:url(bg_building.jpg);background-size:cover;">
+
+<h2 style="text-align:center;color:white">Purchase History</h2>
+
+<div class="card">
+<br>
+<h3 style="color:white;margin-left:-64%">Username: <span style="color:brown" th:text="${username}"></span></h3>
+		<table id="MyTable" class="customers" border="3" style="margin-top:5%;margin-left:10%;" >
+			<thead>
+				<tr class="header">
+					<th>PropertyId</th>
+					<th>TransactionId</th>
+					<th>Purchase DateAndTime</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="tr" th:each="purchase : ${purchaseList}">
+					<td th:text="${purchase.pid}"></td>
+					<td th:text="${purchase.transactionId}"></td>
+					<td th:text="${purchase.dateandtime}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+  <form action="/homepage1" style="margin-left:3%">
+    <button class="button" type="submit" >Home</button>
+    </form>
+    <br>
+    <br>
+    <br>
+</div>
+</body>
+</html>
