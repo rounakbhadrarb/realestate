@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 1500px;
+  height:auto;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  background-color:white;
+  background: transparent;
+}
+.customers {
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:auto;
+	margin-bottom:auto;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+  color:white;
+}
+
+.customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 4px;
+}
+
+.customers tr:hover {background-color:dodgerblue;}
+
+.customers th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+.title {
+  color: grey;
+  font-size: 18px;
+}
+.button1 {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 12%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color:indigo;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+img{border-radius: 50%;}
+</style>
+</head>
+<body  style="background-image:url(bg_building.jpg);background-size:cover;">
+
+<h2 style="text-align:center;color:white">Sold Properties list</h2>
+
+<div class="card">
+<br>
+		<table id="MyTable" class="customers" border="3"  >
+			<thead>
+				<tr class="header">
+				    <th>UserName</th>
+					<th>PropertyId</th>
+					<th>Address</th>
+					<th>Bedrooms</th>
+					<th>Bathrooms</th>
+					<th>Size_sqft</th>
+					<th>Price</th>
+					<th>contactNumber</th>
+					<th>HomeImage</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="tr" th:each="soldhouses : ${listProducts}">
+				<td th:text="${soldhouses.username}"></td>
+					<td th:text="${soldhouses.pid}"></td>
+					<td th:text="${soldhouses.address}"></td>
+					<td th:text="${soldhouses.bedrooms}"></td>
+					<td th:text="${soldhouses.bathrooms}"></td>
+					<td th:text="${soldhouses.size_sqft}"></td>
+					<td th:text="${soldhouses.price}"></td>
+					<td th:text="${soldhouses.ownercontactnumber}"></td>
+					<td><a th:href="@{/getsoldImage/{pid}(pid=${soldhouses.pid})}" class="button1">viewImage</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+  <form action="/homepage" style="margin-left:3%">
+    <button class="button" type="submit" >Home</button>
+    </form>
+    <br>
+    <br>
+    <br>
+</div>
+</body>
+</html>
